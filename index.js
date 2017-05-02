@@ -43,6 +43,6 @@ exports.getAllResults = (opts, allResults = []) =>
       if (!results.length) return allResults
 
       return exports.getAllResults(
-        Object.assign({}, opts, { page: opts.page + 1 }),
+        Object.assign({}, opts, { page: (opts.page || 1) + 1 }),
         allResults.concat(results))
     })
