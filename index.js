@@ -23,6 +23,7 @@ const extractResults = $ =>
     image: parseImage($('.defaultable-picture source[media="(min-width: 730px)"]', el)),
     link: url.resolve(baseUrl, $('.product-details-link', el).attr('href'))
   })).get()
+  .map(item => Object.assign(item, { category: item.link.split('/').slice(6, -3).join('/') }))
 
 exports.buildOpts = ({ page = 1, category, filter }) =>
   category
